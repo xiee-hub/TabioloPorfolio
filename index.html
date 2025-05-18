@@ -1,0 +1,990 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #FFEDFA;
+  color: #BE5985;
+}
+
+header {
+  background: #FFEDFA;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo {
+  position: relative;
+  font-size:  25px;
+  color: #BE5985;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.logo:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #FFEDFA;
+  animation: showRight 1s ease forwards;
+  animation-delay: .4s;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li {
+  position: relative;
+}
+
+.navbar ul li a {
+  font-size: 18px;
+  color: #BE5985;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 35px;
+  border-bottom: 4px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  border-bottom: 1px solid #BE5985;
+}
+
+.navbar ul li a.active {
+  font-weight: bolder;
+}
+
+.hamburger {
+  display: none;
+  font-size: 26px;
+  color: #BE5985;
+  cursor: pointer;
+}
+
+.side-menu {
+  right: -250px;
+  background-color: #FFEDFA;
+  z-index: 1000;
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  padding: 2rem;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.side-menu.open {
+  display: block;
+}
+
+.side-menu ul {
+  margin-top: 20px;
+  list-style: none;
+  padding: 20px;
+}
+
+.side-menu ul li {
+  margin: 20px 0;
+}
+
+.side-menu ul li a {
+  color: #BE5985;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  text-align: right;
+}
+
+.side-menu ul li:hover {
+  border-bottom: 1px solid #BE5985;
+}
+
+.side-menu ul li a.active {
+  font-weight: bolder;
+}
+
+.home {
+  height: auto; 
+  min-height: 100vh;
+  padding: 100px 10%; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.home-content {
+  max-width: 600px;
+}
+
+.home-content h1 {
+  position: relative;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.home-content h1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFEDFA;
+    animation: showRight 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.home-content h3 {
+  position: relative;
+  font-size: 32px;
+  font-weight: 700;
+  color: #EC7FA9;
+}
+
+.home-content h3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFEDFA;
+    animation: showRight 1s ease forwards;
+    animation-delay: 1.3s;
+}
+
+.home-content p {
+  position: relative;
+  font-size: 24px;
+  margin: 20px 0 40px;
+}
+
+.home-content p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFEDFA;
+    animation: showRight 1s ease forwards;
+    animation-delay: 1.6s;
+}
+
+.home-content .btn-box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 345px;
+    height: 50px;
+}
+
+.home-content .btn-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFEDFA;
+    animation: showRight 1s ease forwards;
+    animation-delay: 1.9s;
+    z-index: 2;
+}
+
+.btn-box a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 100%;
+    background: #EC7FA9;
+    border: 2px solid #EC7FA9;
+    border-radius: 8px;
+    font-size: 19px;
+    color: #FFEDFA;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.btn-box a:hover {
+    color: #EC7FA9;
+}
+
+.btn-box a:nth-child(2) {
+    background: transparent;
+    color: #EC7FA9;
+}
+
+.btn-box a:nth-child(2):hover {
+    color: #FFEDFA;
+}
+
+.btn-box a:nth-child(2)::before {
+    background: #EC7FA9;
+}
+
+.btn-box a:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #FFEDFA;
+    z-index: -1;
+    transition: .5s;
+}
+
+.btn-box a:hover::before {
+    width: 100%;
+}
+
+.home-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-image img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
+    border: 4px solid #EC7FA9;
+}
+
+.home-sci {
+    position: absolute;
+    bottom: 40px;
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-sci::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFEDFA;
+    animation: showRight 1s ease forwards;
+    animation-delay: 2.5s;
+    z-index: 2;
+}
+.home-sci a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #EC7FA9;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #EC7FA9;
+    text-decoration: none;
+    z-index: 1;
+    overflow: hidden;
+    overflow: .5s;
+}
+
+.home-sci a:hover {
+    color: #FFEDFA;
+}
+
+.home-sci a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #EC7FA9;
+    z-index: -1;
+    transition: .5s;
+}
+
+.home-sci a:hover::before {
+    width: 100%;
+}
+
+.home-imgHover {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    width: 700px;
+    height: 100%;
+    background: transparent;
+    transition: 3s;
+    animation: manipactiveHoveris forwards;
+    animation-delay: 4s;
+}
+
+.about-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+.about-content .left {
+  flex: 1;
+  text-align: center;
+}
+
+.about-content .right {
+    flex: 2;
+}
+
+.about-content h1 {
+  font-size: 64px;
+  margin-bottom: 10px;
+}
+
+.about-content h3 {
+  font-size: 28px;
+}
+
+.about-content p {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.profile-pic {
+  width: 450px;
+  border-radius: 20px;
+  border: 4px solid #EC7FA9;
+}
+
+.tabs {
+    margin: 2rem 0;
+}
+
+.tab {
+  background: none;
+  color: #BE5985;
+  border: none;
+  font-size: 28px;
+  margin-right: 20px;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  font-weight: bolder;
+}
+
+.tab.active {
+  color: #EC7FA9;
+  border-color: #EC7FA9;
+}
+
+.tab-content {
+  display: none;
+  margin-top: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.services-section {
+  justify-content: center;
+  align-items: center;
+  background-color: #FFEDFA;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.services-section h2 {
+    margin-bottom: 40px;
+    font-size: 64px;
+}
+
+.services-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.service-item {
+  background-color: #FFB8E0;
+  border: 1px solid #EC7FA9;
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px rgba(231, 51, 201, 0.164);
+  overflow: hidden;
+  padding: 20px;
+  width: 450px;
+  text-align: left;   
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.service-item h3 {
+    margin: 15px 0;
+    font-size: 28px;
+    color: #BE5985;
+}
+
+.service-item p {
+    color: #BE5985;
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+.service-item a {
+    color: #BE5985;
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+.service-item i {
+  font-size: 60px;
+  margin-bottom: 1rem;
+}
+
+.portfolio-section {
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background-color: #FFEDFA;
+}
+
+.portfolio-section h2 {
+  margin-bottom: 40px;
+  font-size: 64px;
+  text-align: center;
+}
+
+.portfolio-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+.portfolio-item {
+  background-color: #FFB8E0;
+  border: 1px solid #EC7FA9;
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px rgba(231, 51, 201, 0.164);
+  overflow: hidden;
+  padding: 20px;
+  width: 450px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.portfolio-item h3 {
+    margin: 15px 0;
+    font-size: 28px;
+    color: #BE5985;
+}
+
+.portfolio-item p {
+    margin: 15px 0;
+    font-size: 24px;
+    color: #BE5985;
+}
+
+.see-more-button {
+    width: 200px;
+    height: 50px;
+    margin-top: 50px;
+    padding: 10px 20px;
+    background-color: #EC7FA9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.see-more-button:hover {
+    background-color: #BE5985;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background-color: #FFEDFA;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact .sub-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-left {
+  flex: 1;
+  margin-right: 5px;
+  min-width: 250px;
+  justify-content: left;
+
+}
+
+.contact-right {
+    flex: 1;
+    min-width: 250px;
+}
+
+.contact-left h1 {
+    margin: 10px 0;
+    font-size: 64px;
+}
+
+.contact-left p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 28px;
+}
+
+.contact-left p i {
+    font-size: 48px;
+}
+
+.download-btn {
+    position: relative;
+    display: inline-flex;
+    margin-top: 30px;
+    width: 200px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    
+}
+
+.btn {
+    background-color: #EC7FA9;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn2:hover {
+    background-color: #EC7FA9;
+}
+
+form input {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #BE5985;
+    border-radius: 5px;
+    background: #FFB8E0;
+    color: #BE5985;
+    font-size: 20px;
+}
+
+form textarea {
+    width: 100%;
+    height: 160px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #BE5985;
+    border-radius: 5px;
+    background: #FFB8E0; 
+    color: #BE5985;
+    font-size: 20px;
+    resize: none;
+}
+
+.contact-right input::placeholder,
+.contact-right textarea::placeholder {
+    color: #BE5985;
+}
+
+.submit-btn {
+    position: relative;
+    display: inline-flex;
+    margin-top: 30px;
+    width: 250px;
+    height: 70px;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    
+}
+
+span#msg {
+    display: block;
+    margin-top: 20px;
+    color: #BE5985;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar    {
+         background-color: #FFEDFA;
+      }
+      .navbar ul {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .section {
+        margin-bottom: 30px;
+      }
+
+      .home {
+        position: relative;
+        flex-direction: column;
+      }
+
+      .home-content, .home-image {
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+      }
+
+      .home-sci {
+        position: absolute;
+        bottom: 40px;
+        margin-top: 20px;
+        padding: 10px;
+        display: flex;
+        gap: 15px; 
+        justify-content: center;
+        align-items: center;
+      }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-content .right {
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+
+    .services-grid,
+    .portfolio-grid {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .side-menu {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+
+  form input {
+    height: 60px;
+  }
+
+  form textarea {
+    height: 120px;
+  }
+
+    .close-menu {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 20px;
+        color: #BE5985;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+}
+
+@keyframes showRight {
+  100% {
+    width: 0;
+  }
+}
+
+</style>
+
+<body>
+    
+    <header class="header">
+
+        <a href="#" class="logo">My Portfolio Website</a>
+
+        <nav class="navbar">
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+            <ul>
+              <li><a href="#" class="active">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#contacts">Contact</a></li>
+            </ul>
+          </nav>
+        
+          <div class="side-menu" id="sideMenu">
+            <button id="closeMenu" class="close-menu">✕</button>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contacts">Contact</a></li>
+              </ul>
+            </div>
+    </header>
+
+    <section class="home">
+        <div class="home-content">
+            <h1>Hi, I'm Trexie Ann Tabiolo</h1>
+            <h3>IT Student</h3>
+            <p>Currently attending at Global Reciprocal College</p>
+            <div class="btn-box">
+                <a href="#about">About Me</a>
+                <a href="#">See More</a>
+            </div>
+        </div>
+        <div class="home-image">
+            <img src="images\home.jpeg" alt="img">
+        </div>
+        <div class="home-sci">
+            <a href="https://www.facebook.com/Annxie09" target="_blank" rel="noopener" rel="noreferrer"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-tiktok'></i></a>
+            <a href="https://www.instagram.com/rckmr_" target="_blank" rel="noopener" rel="noreferrer"><i class='bx bxl-instagram-alt'></i></a>
+        </div>
+    </section>
+
+    <section id="about">
+    <div class="about-content">
+        <div class="left">
+          <img src="images/about.jpeg" alt="Profile Picture" class="profile-pic">
+        </div>
+        <div class="right">
+          <h1>About Me</h1>
+          <p>
+            Hi everyone I am Trexie Ann Tabiolo currently studying at Global Reciprocal Colleges,
+            My skills includes designing and editing and I am currently learning
+            programming as an IT student
+          </p>
+    
+          <div class="tabs">
+            <button class="tab active" onclick="showTab('skills')">Skills</button>
+            <button class="tab" onclick="showTab('experience')">Work Experience</button>
+            <button class="tab" onclick="showTab('education')">Educational Background</button>
+          </div>
+    
+          <div id="skills" class="tab-content active">
+            <h3>Soft Skills</h3>
+            <p>Communication, Creativity, Time Management</p>
+          </div>
+    
+          <div id="experience" class="tab-content">
+            <h3>2024 - Present</h3>
+            <p>Photobooth Operator/Balloon Decorator</p>
+          </div>
+    
+          <div id="education" class="tab-content">
+            <h3>2024 - Present</h3>
+            <p>Global Reciprocal Colleges - BSIT</p>
+            <h3>2023 - 2024</h3>
+            <p>Leon National High School - ABM</p>
+            <h3>2022 - 2023</h3>
+            <p>Arellano University - ABM</p>
+            <h3>2018 - 2022</h3>
+            <p>Obando National High School</p>
+            <h3>2012 - 2018</h3>
+            <p>Panghulo Elementary School</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <section id="services" class="services-section">
+        <h2 class="heading">My Services</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <i class='bx bx-camera'></i>
+                <h3>Photo Editing</h3>
+                <p>Photo Editing Services like Logo, Banner  etc. using Photoshop or Canva</p>
+                <a href="#">Learn more</a>
+            </div>
+            <div class="service-item">
+                <i class='bx bx-camera-movie'></i>
+                <h3>Video Editing</h3>
+                <p>Video Edting Services like Intros etc.</p>
+                <a href="#">Learn more</a>
+            </div>
+            <div class="service-item">
+                <i class='bx bx-pen'></i>
+                <h3>Web Development</h3>
+                <p>Web Developing Services using HTML,CSS and Javascript</p>
+                <a href="#">Learn more</a>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="portfolio" class="portfolio-section">
+        <h2 class="heading">My Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <h3>Photoshop Projects</h3>
+                <p>This contains all of my projects using Photoshop</p>
+                <button class="see-more-button">See More</button>
+            </div>
+            <div class="portfolio-item">
+                <h3>WebDev Projects</h3>
+                <p>This contains all of my projects in WebDev</p>
+                <button class="see-more-button">See More</button>
+            </div>
+            <div class="portfolio-item">
+                <h3>Other Projects</h3>
+                <p>This contains all of my other projects...</p>
+                <button class="see-more-button">See More</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="contact">
+                <div class="row">
+                    <div class="contact-left">
+                        <h1 class="sub-title">Contact Me</h1>
+                        <p><i class="bx bx-envelope"></i>xieanntabiolo@gmail.com</p>
+                        <p><i class="bx bx-phone"></i> 09212019487</p>
+                        <a href="images/home.jpeg" download class="btn btn2 download-btn">Download CV</a>
+                    </div>
+                    <div class="contact-right">
+                       <form method="post" action="https://script.google.com/macros/s/AKfycbxQASjWbOxWSeu9oZqOxNSSCnwgrTkTbbXvw9ia67p0vypKVi6DvEG72zISgEi1VjSqSw/exec" name="contact-form">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn btn2 submit-btn">Submit</button>
+                       </form>
+                    </div>
+                </div>
+            </div>
+    </section>
+    
+    <script>
+        function showTab(tabId) {
+  const tabs = document.querySelectorAll(".tab");
+  const contents = document.querySelectorAll(".tab-content");
+
+  tabs.forEach(tab => tab.classList.remove("active"));
+  contents.forEach(content => content.classList.remove("active"));
+
+  document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add("active");
+  document.getElementById(tabId).classList.add("active");
+}
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxQASjWbOxWSeu9oZqOxNSSCnwgrTkTbbXvw9ia67p0vypKVi6DvEG72zISgEi1VjSqSw/exec'
+
+const form = document.forms['contact-form']
+
+form.addEventListener('submit', e => {
+  
+  e.preventDefault()
+  
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+  .then(response => alert("Thank you! Form is submitted" ))
+  .then(() => { window.location.reload(); })
+  .catch(error => console.error('Error!', error.message))
+})
+
+const hamburger = document.getElementById('hamburger-icon');
+  const sideMenu = document.getElementById('side-menu');
+
+  hamburger.addEventListener('click', () => {
+    sideMenu.classList.toggle('open');
+  });
+
+  // Optional: close menu when a link is clicked
+  document.querySelectorAll('#side-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      sideMenu.classList.remove('open');
+    });
+  });
+  </script>
+</body>
+</html>
